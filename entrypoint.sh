@@ -32,7 +32,7 @@ else
     echo -e "\t${cl_cy}authentication_relay_password${cl_nc} password is specified by user:\t${cl_lg}${authentication_relay_password:0:2}***${authentication_relay_password:$((${#authentication_relay_password}-2))}${cl_nc}"
 fi
 
-port=${port-"8000"}
+port=${port-"80"}
 if [[ "$port" =~ $port_regex ]]; then
     if (lsof -i :$port | grep TCP); then
         echo -e "${cl_red}Port already usage. Please select another port.${cl_nc}"
@@ -44,7 +44,7 @@ else
     echo -e "${cl_red}Port is must be between 0-65535${cl_nc}"
     exit 1
 fi
-limits_clients=${limits_clients-"100"}
+limits_clients=${limits_clients-"5000"}
 limits_sources=${limits_sources-"2"}
 bind_address=${bind_address-'::'}
 echo -e "\tlimits_clients $limits_clients
